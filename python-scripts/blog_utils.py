@@ -32,10 +32,10 @@ def create_new_blog(path_to_content, title, content, cover_image=Path("cover_ima
             print("Blog created")
             return path_to_new_content
     else:
-        raise FileExistsError("File alread exists! Abort")
+        raise FileExistsError("File already exists! Abort")
     
 def check_for_duplicate_links(path_to_new_content, links):
-    urls =[str(link.get("href")) for link in links]
+    urls = [str(link.get("href")) for link in links]
     content_path = str(Path(*path_to_new_content.parts[-2:]))
     return content_path in urls
 
