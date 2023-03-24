@@ -53,6 +53,11 @@ def write_to_index(path_to_blog, path_to_new_content):
     link_to_new_blog = soup.new_tag("a", href=Path(*path_to_new_content.parts[-2:]))
     link_to_new_blog.string = path_to_new_content.name.split(".")[0]
     last_link.insert_after(link_to_new_blog)
+
+    for link in links:
+        new_tag = soup.new_tag('span')
+        new_tag.string = ' | '
+        link.insert_before(new_tag)
     
     with open(path_to_blog/"index.html", "w") as f:
         f.write(str(soup.prettify(formatter='html')))
